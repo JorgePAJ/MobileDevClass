@@ -10,11 +10,11 @@ import android.view.View
 import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
-
-
+    private lateinit var editText: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.on_resume)
 //        Log.d("MainActivity", "debug")
 //        Log.i("MainActivity", "info")
@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
 //        var textito : TextView = findViewById<TextView>(R.id.nameInput)
 
 //        Implicito
-//        val editText = findViewById<EditText>(R.id.nameInput)
+        editText = findViewById<EditText>(R.id.nameInput)
 
 //        por su modificabilidad las variables pueden ser mutables o inmutables
 
@@ -75,6 +75,8 @@ class MainActivity : AppCompatActivity() {
 
     fun cambiarActivity(view: View?){
         val intent = Intent(this, SecondActivity::class.java)
+        intent.putExtra("Pokemon", "Pikachu")
+        intent.putExtra("name", editText.text.toString())
         startActivity(intent)
     }
 }
